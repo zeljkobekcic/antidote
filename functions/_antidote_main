@@ -20,7 +20,7 @@ if (( $+functions[antidote-${cmd}] )); then
 elif [[ -z "$cmd" ]] || [[ $cmd = (--help|-h) ]]; then
   antidote-help "$@"
 elif [[ $cmd = (--version|-v) ]]; then
-  local gitsha=$(git -C "${0:h:h}" rev-parse --short HEAD 2>/dev/null)
+  local gitsha=$(_antidote_git -C "${0:h:h}" rev-parse --short HEAD 2>/dev/null)
   [[ -z "$gitsha" ]] || ver="$ver ($gitsha)"
   echo "antidote version $ver"
 else

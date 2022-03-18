@@ -10,6 +10,6 @@ local ANTIDOTE_HOME=$(antidote-home)
 local d
 local bundle
 for d in $ANTIDOTE_HOME/*/.git/..(N); do
-  local url=$(git -C "${d:A}" config remote.origin.url)
+  local url=$(_antidote_git -C "${d:A}" config remote.origin.url)
   printf '%-64s %s\n' $url ${d:A}
 done

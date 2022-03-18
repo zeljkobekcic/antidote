@@ -4,11 +4,11 @@ setopt local_options no_notify no_monitor
 
 function __antidote_update {
   bundledir="$1"
-  local url=$(git -C "$bundledir" config remote.origin.url)
-  local oldsha=$(git -C "$bundledir" rev-parse --short HEAD)
+  local url=$(_antidote_git -C "$bundledir" config remote.origin.url)
+  local oldsha=$(_antidote_git -C "$bundledir" rev-parse --short HEAD)
   echo "antidote: updating: $url"
-  git -C "$bundledir" pull --quiet --ff --rebase --autostash
-  local newsha=$(git -C "$bundledir" rev-parse --short HEAD)
+  _antidote_git -C "$bundledir" pull --quiet --ff --rebase --autostash
+  local newsha=$(_antidote_git -C "$bundledir" rev-parse --short HEAD)
   if [[ $oldsha != $newsha ]]; then
     echo "antidote: updated: $url $oldsha -> $newsha"
   fi
@@ -16,7 +16,7 @@ function __antidote_update {
 
 # update antidote
 echo "Updating antidote..."
-git -C "${0:A:h:h}" pull --ff --rebase --autostash
+_antidote_git -C "${0:A:h:h}" pull --ff --rebase --autostash
 
 echo "Updating bundles..."
 local ANTIDOTE_HOME=$(antidote-home)

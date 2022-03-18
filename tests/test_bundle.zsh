@@ -9,7 +9,7 @@ ZSH_PLUGINS_ZSH=${ZSH_PLUGINS_TXT:r}.zsh
 
 # mocks
 # comment this out to test actually cloning repos
-function _antidote_gitclone { _mock_gitclone "$@" }
+function _antidote_git { _mock_git "$@" }
 
 actual_repos=($ANTIDOTE_HOME/*(N/))
 @test "nothing has been cloned" $#actual_repos -eq 0

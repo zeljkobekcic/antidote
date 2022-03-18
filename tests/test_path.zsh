@@ -14,7 +14,7 @@ actual=$(antidote path $repo 2>&1)
 @test "'antidote path' fails with the expected message" "$expected" = "$actual"
 
 # mock so we don't actually clone a repo
-function _antidote_gitclone { _mock_gitclone "$@" }
+function _antidote_git { _mock_git "$@" }
 
 # we need to redirect fd3 to somewhere when we mock cloning
 # Also, we aren't testing 'antidote bundle' here - we already have tests for that.

@@ -7,7 +7,7 @@ source $PRJ_HOME/antidote.zsh
 # mocks
 # comment this out to test actually cloning repos, but unless you somehow think git
 # or the git command is broken it's probably not necessary
-function _antidote_gitclone { _mock_gitclone "$@" }
+function _antidote_git { _mock_git "$@" }
 
 BUNDLEFILE=$TEMP_HOME/.zsh_plugins.txt
 STATICFILE="${BUNDLEFILE:r}.zsh"
